@@ -1,0 +1,14 @@
+p {
+  font-family: monospace;
+}
+
+.header {
+  color: black;
+  -webkit-text-stroke: 1px #FFF;
+  background-image: url("../images/bg.png");
+  background-repeat: repeat;
+}
+
+.link {
+  color: royalblue;
+}
