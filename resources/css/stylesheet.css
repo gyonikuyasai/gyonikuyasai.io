@@ -3,20 +3,23 @@
   -webkit-text-stroke: 1px #FFF;
   background-image: url("../images/bg.png");
   background-repeat: repeat;
+  text-align: center;
 }
 
 .main p {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: large;
+  text-align: center;
 }
 
 .btn {
   padding: 8px 24px;
-  color: white;
-  display: inline-block;
-  opacity: 0.5;
-  text-align: center;
+  width: 45px;
   border-radius: 4px;
+  color: white;
+  opacity: 0.5;
+  display: inline-block;
+  text-align: center;
 }
 
 .btn:hover {
@@ -27,6 +30,7 @@
   margin-top: 20px;
   margin-bottom: 20px;
   font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
 }
 
 .twitter {
