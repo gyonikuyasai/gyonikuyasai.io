@@ -6,6 +6,12 @@
   text-align: center;
 }
 
+.main p {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: large;
+  text-align: center;
+}
+
 .btn {
   padding: 8px 24px;
   border-radius: 4px;
