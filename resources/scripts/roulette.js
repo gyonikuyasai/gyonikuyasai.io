@@ -62,7 +62,8 @@ function stop() {
   if(roulette) {
     clearInterval(roulette);
     // Generate `lunchSpot`
-    document.getElementById("lunchSpot").innerHTML = lunchSpot[idx];
+    var linkString = '<a target=\"_blank\"> href=\"' + data[i][1] + '\">' + data[i][0] + '</a>'
+    document.getElementById("lunchSpot").innerHTML = linkString;
   }
 }
 
