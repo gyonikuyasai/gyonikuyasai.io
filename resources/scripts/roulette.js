@@ -39,15 +39,23 @@ function makeTable(data, tableId) {
     if (i == 0) {
       cell.style.backgroundColor = "#55acee";
       cell.style.color = "white";
-      cell.appendChild(document.createTextNode(data[i]));
+      cell.appendChild(document.createTextNode(data[i][0]));
     } else {
-      var linkString = '<a target=\"_blank\" href=\"' + data[i][1] + '\">' + data[i][0] + '</a>'
-      cell.appendChild(document.createTextNode(linkString));
+      var anchor = createLink(data[i]);
+      cell.appendChild(anchor);
     }
   }
 
   table.align = "center";
   document.getElementById(tableId).appendChild(table);
+}
+
+function createLink(row) {
+  var anchor = document.createElement('a');
+  anchor.textContent = row[0];
+  anchor.innerText = row[0];
+  anchor.href = row[1];
+  return anchor;
 }
 
 // Start roulette
@@ -62,8 +70,7 @@ function stop() {
   if(roulette) {
     clearInterval(roulette);
     // Generate `lunchSpot`
-    var linkString = '<a target=\"_blank\"> href=\"' + data[i][1] + '\">' + data[i][0] + '</a>'
-    document.getElementById("lunchSpot").innerHTML = linkString;
+    document.getElementById("lunchSpot").innerHTML = lunchSpot[idx][0];
   }
 }
 
