@@ -22,8 +22,8 @@ function makeLunchTable(){
   req.open("get", "https://gyonikuyasai.github.io/gyonikuyasai.io/resources/csv/lunchSpot.csv");
   req.send(null);
   req.onload = function() {
-    this.lunchSpot = convertCSVtoArray(req.responseText);
-    makeTable(this.lunchSpot, "lunchTable");
+    lunchSpot = convertCSVtoArray(req.responseText);
+    makeTable(lunchSpot, "lunchTable");
   }
 }
 
