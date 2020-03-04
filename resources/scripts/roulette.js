@@ -19,11 +19,11 @@ window.onload = function() {
 
 function makeLunchTable(){
   var req = new XMLHttpRequest;
-  req.open("get", "../csv/lunchSpot.csv");
+  req.open("get", "https://gyonikuyasai.github.io/gyonikuyasai.io/resources/csv/lunchSpot.csv");
   req.send(null);
   req.onload = function() {
     this.lunchSpot = convertCSVtoArray(req.responseText);
-    this.makeTable(this.lunchSpot, "lunchTable");
+    makeTable(this.lunchSpot, "lunchTable");
   }
 }
 
@@ -31,7 +31,7 @@ function convertCSVtoArray(str){
   var result = [];
   var tmp = str.split("\n");
   for(var i = 0; i < tmp.length; i++) {
-    result[i] = temp[i].split(',');
+    result[i] = tmp[i].split(',');
   }
   return result;
 }
