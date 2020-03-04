@@ -41,7 +41,7 @@ function makeTable(data, tableId) {
       cell.style.color = "white";
       cell.appendChild(document.createTextNode(data[i]));
     } else {
-      var linkString = '<a target=\"_blank\"> href=\"' + data[i][1] + '\">' + data[i][0] + '</a>'
+      var linkString = '<a target=\"_blank\" href=\"' + data[i][1] + '\">' + data[i][0] + '</a>'
       cell.appendChild(document.createTextNode(linkString));
     }
   }
