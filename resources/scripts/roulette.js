@@ -36,10 +36,13 @@ function makeTable(data, tableId) {
   for (var i = 0; i < data.length; i++) {
     rows.push(table.insertRow(-1));
     cell = rows[i].insertCell(-1);
-    cell.appendChild(document.createTextNode(data[i]));
     if (i == 0) {
       cell.style.backgroundColor = "#55acee";
       cell.style.color = "white";
+      cell.appendChild(document.createTextNode(data[i]));
+    } else {
+      var linkString = '<a target=\"_blank\"> href=\"' + data[i][1] + '\">' + data[i][0] + '</a>'
+      cell.appendChild(document.createTextNode(linkString));
     }
   }
 
