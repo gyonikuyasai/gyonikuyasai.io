@@ -1,15 +1,7 @@
 var roulette;
 var idx;
 
-var lunchSpot2 = [
-  '昼食処一覧',
-  '食堂',
-  'Austin American Grill',
-  'Five Guys',
-  'Suehiro',
-  'Star of India'
-];
-
+// Lunch spot is read from csv
 var lunchSpot = [];
 
 // Make lunch table
@@ -71,10 +63,10 @@ function stop() {
   }
 }
 
-// Generate roulette with random value between from 1 to the length of `lunchSpots`
+// Generate roulette with random value between from 1 to the length of `lunchSpot`
 function generateRoulette() {
-  // Generate random value between from 1 to the length of `lunchSpots`
-  idx = Math.floor( Math.random() * (lunchSpot.length-1) ) +1;
+  // Generate random value from 1 to `lunchSpot.length - 2`(exclude top and last blank row)
+  idx = Math.floor( Math.random() * (lunchSpot.length - 2)) + 1;
   
   // Generate roulette
   document.getElementById("roulette").innerHTML = idx;
