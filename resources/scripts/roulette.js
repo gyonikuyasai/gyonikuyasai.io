@@ -1,4 +1,4 @@
-// Variable definition
+// Variable definition and initialization
 var roulette;
 var idx;
 var lunchSpotData = [];
