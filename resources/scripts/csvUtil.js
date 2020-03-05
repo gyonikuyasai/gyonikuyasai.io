@@ -13,10 +13,23 @@ function renderTable(data, tableId) {
   // Loop for row of `data`
   for (var i = 0; i < data.length; i++) {
     rows.push(table.insertRow(-1));
-    cell = rows[i].insertCell(-1);
     number = data[i][COL_NUMBER];
     text = data[i][COL_TEXT];
     url = data[i][COL_URL];
+    
+    // Append number to the cell
+    cell = rows[i].insertCell(-1);
+    cell.appendChild(document.createTextNode(number));
+    cell.style.align = "center"
+    cell.style.border = "thin groove gray";
+    if (i == ROW_HEADING) {
+      // Change the color of the cell of heading
+      cell.style.backgroundColor = "#55acee";
+      cell.style.color = "white";
+    }
+  
+    // Append link or text to the cell
+    cell = rows[i].insertCell(-1);
     // For heading row
     if (i == ROW_HEADING) {
       // Change the color of the cell of heading
@@ -29,8 +42,11 @@ function renderTable(data, tableId) {
       cell.appendChild(createLinkOrTextNode(text,url));
     }
     cell.align = "left";
+    cell.style.border = "thin groove gray";
   }
+  table.cellSpacing = "1px";
   table.align = "center";
+  table.style.border = "thin groove gray";
   document.getElementById(tableId).appendChild(table);
 }
 
@@ -38,13 +54,19 @@ function renderTable(data, tableId) {
 //  - `str`: responseText of XMLHttpRequest to the URL of CSV
 function convertCSVtoArray(str){
   var result = [];
-  var tmp = str.split("\r\n");
-  for(var i = 0; i < tmp.length; i++) {
-    result[i] = tmp[i].split(',');
+  var row = str.split("\r\n");
+  for(var i = 0; i < row.length; i++) {
+    // Skip blank row
+    if(!row[i]){
+      continue;
+    }
+    result[i] = row[i].split(',');
   }
   return result;
 }
 
+// Return `a` tag element if `url` is not null
+//  else return text node element
 function createLinkOrTextNodeFromRow (row) {
   text = row[COL_TEXT];
   url = row[COL_URL];
