@@ -8,13 +8,13 @@ var HEADING_COLOR = "white";
 var TABLE_STYLE_BORDER = "thin groove gray";
 var CELL_STYLE_BORDER = "thin groove gray";
 
-
 // Render HTML table from 2D Array `data` to the element whose ID is `tableId`
 function renderTable(data, tableId) {
   var table = document.createElement("table");
   var rows = [];
   var text;
   var url;
+  
   // Loop for row of `data`
   for (var i = 0; i < data.length; i++) {
     rows.push(table.insertRow(-1));
