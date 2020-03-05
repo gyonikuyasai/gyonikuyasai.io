@@ -7,6 +7,8 @@ var HEADING_BG_COLOR = "#99CCFF";
 var HEADING_COLOR = "white";
 var TABLE_STYLE_BORDER = "thin groove gray";
 var CELL_STYLE_BORDER = "thin groove gray";
+var TABLE_CELL_SPACING = "2px";
+var TABLE_CELL_PADDING = "2px";
 
 // Render HTML table from 2D Array `data` to the element whose ID is `tableId`
 function renderTable(data, tableId) {
@@ -25,7 +27,7 @@ function renderTable(data, tableId) {
     // Append number to the cell
     cell = rows[i].insertCell(-1);
     cell.appendChild(document.createTextNode(number));
-    cell.style.align = "center"
+    cell.align = "center"
     cell.style.border = CELL_STYLE_BORDER;
     if (i == ROW_HEADING) {
       // Change the color of the cell of heading
@@ -48,7 +50,8 @@ function renderTable(data, tableId) {
     cell.align = "left";
     cell.style.border = CELL_STYLE_BORDER;
   }
-  table.cellSpacing = "1px";
+  table.cellSpacing = TABLE_CELL_SPACING;
+  table.cellPadding = TABLE_CELL_PADDING;
   table.align = "center";
   table.style.border = TABLE_STYLE_BORDER;
   document.getElementById(tableId).appendChild(table);
