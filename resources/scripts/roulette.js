@@ -35,9 +35,9 @@ function stop() {
   }
 }
 
-// Generate roulette with random value between from 1 to the length of `lunchSpotData`
+// Generate roulette with random value
 function generateRoulette() {
-  // Generate random value from 1 to (`lunchSpotData`.length - 1) (exclude heading row)
+  // Generate random value from 1 to (`lunchSpotData`.length - 1). Exclude the value 0 (row:0 is heading)
   idx = Math.floor( Math.random() * (lunchSpotData.length - 1)) + 1;
   // Generate roulette
   document.getElementById("roulette").innerHTML = idx;
