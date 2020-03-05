@@ -37,7 +37,10 @@ function stop() {
   if(roulette) {
     clearInterval(roulette);
     // Render `lunchSpot`
-    document.getElementById(lunchSpotId).innerHTML = lunchSpotData[idx][0];
+    var elm = document.getElementById(lunchSpotId);
+    var node = createLinkOrTextNodeFromRow(lunchSpotData[idx]);
+    elm.innerHTML = "";
+    elm.appendChild(node);
   }
 }
 
