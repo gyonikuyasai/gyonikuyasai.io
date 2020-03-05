@@ -2,6 +2,7 @@
 var roulette;
 var idx;
 var lunchSpotData = [];
+var csvURL = "https://gyonikuyasai.github.io/gyonikuyasai.io/resources/csv/lunchSpot.csv";
 
 // Render lunch spot table when this page loaded
 window.onload = function() {
@@ -10,7 +11,7 @@ window.onload = function() {
 
 // Render lunch spot table from CSV
 function renderLunchSpotTable() {
-  var url = "https://gyonikuyasai.github.io/gyonikuyasai.io/resources/csv/lunchSpot.csv";
+  var url = csvURL;
   var req = new XMLHttpRequest;
   req.open("get", url);
   req.send(null);
