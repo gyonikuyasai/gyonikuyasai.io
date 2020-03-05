@@ -27,7 +27,7 @@ function renderLunchSpotTable() {
 
 // Start roulette
 function start() {
-  roulette = setInterval(renderRoulette, 100);
+  roulette = setInterval(renderRoulette, 50);
   // Reset `lunchSpot`
   document.getElementById(lunchSpotId).innerHTML = welcomeMessage;
 }
