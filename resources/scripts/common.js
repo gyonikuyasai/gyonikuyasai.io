@@ -28,7 +28,7 @@ function makeTable(data, tableId) {
 }
 
 // Convert CSV to 2D array then return the 2D array
-//  - str: responceText of XMLHttpRequest to the URL of CSV
+//  - str: responseText of XMLHttpRequest to the URL of CSV
 function convertCSVtoArray(str){
   var result = [];
   var tmp = str.split("\n");
