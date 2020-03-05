@@ -3,6 +3,9 @@ var ROW_HEADING = 0;
 var COL_NUMBER = 0;
 var COL_TEXT = 1;
 var COL_URL = 2;
+var HEADING_BG_COLOR = "#99CCFF";
+var HEADING_COLOR = "white";
+
 
 // Render HTML table from 2D Array `data` to the element whose ID is `tableId`
 function renderTable(data, tableId) {
@@ -24,8 +27,8 @@ function renderTable(data, tableId) {
     cell.style.border = "thin groove gray";
     if (i == ROW_HEADING) {
       // Change the color of the cell of heading
-      cell.style.backgroundColor = "#55acee";
-      cell.style.color = "white";
+      cell.style.backgroundColor = HEADING_BG_COLOR;
+      cell.style.color = HEADING_COLOR;
     }
   
     // Append link or text to the cell
@@ -33,8 +36,8 @@ function renderTable(data, tableId) {
     // For heading row
     if (i == ROW_HEADING) {
       // Change the color of the cell of heading
-      cell.style.backgroundColor = "#55acee";
-      cell.style.color = "white";
+      cell.style.backgroundColor = HEADING_BG_COLOR;
+      cell.style.color = HEADING_COLOR;
       // Append text to the cell
       cell.appendChild(document.createTextNode(text));
     } else {
