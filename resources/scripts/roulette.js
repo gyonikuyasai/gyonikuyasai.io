@@ -1,27 +1,28 @@
+// Variable definition
 var roulette;
 var idx;
 var lunchSpotData = [];
 
-// Make lunch table when this page loaded
+// Render lunch spot table when this page loaded
 window.onload = function() {
-  makeLunchSpotTable();
+  renderLunchSpotTable();
 } 
 
-// Make lunch table from CSV
-function makeLunchSpotTable() {
+// Render lunch spot table from CSV
+function renderLunchSpotTable() {
   var url = "https://gyonikuyasai.github.io/gyonikuyasai.io/resources/csv/lunchSpot.csv";
   var req = new XMLHttpRequest;
   req.open("get", url);
   req.send(null);
   req.onload = function() {
     lunchSpotData = convertCSVtoArray(req.responseText);
-    makeTable(lunchSpotData, "lunchSpotTable");
+    renderTable(lunchSpotData, "lunchSpotTable");
   }
 }
 
 // Start roulette
 function start() {
-  roulette = setInterval(generateRoulette, 100);
+  roulette = setInterval(renderRoulette, 100);
   // Reset `lunchSpot`
   document.getElementById("lunchSpot").innerHTML = "本日の昼食は?";
 }
@@ -30,15 +31,15 @@ function start() {
 function stop() {
   if(roulette) {
     clearInterval(roulette);
-    // Generate `lunchSpot`
+    // Render `lunchSpot`
     document.getElementById("lunchSpot").innerHTML = lunchSpotData[idx][0];
   }
 }
 
-// Generate roulette with random value
-function generateRoulette() {
+// Render roulette with random value
+function renderRoulette() {
   // Generate random value from 1 to (`lunchSpotData`.length - 1). Exclude the value 0 (row:0 is heading)
   idx = Math.floor( Math.random() * (lunchSpotData.length - 1)) + 1;
-  // Generate roulette
+  // Render roulette
   document.getElementById("roulette").innerHTML = idx;
 }
