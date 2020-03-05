@@ -12,7 +12,7 @@ function makeTable(data, tableId) {
     cell = rows[i].insertCell(-1);
     // First row is heading
     if (i == 0) {
-      // Change the color of the cell for heading
+      // Change the color of the cell of heading
       cell.style.backgroundColor = "#55acee";
       cell.style.color = "white";
       // Append label to the cell using label in column 0
@@ -22,6 +22,7 @@ function makeTable(data, tableId) {
       var anchor = createLink(data[i]);
       cell.appendChild(anchor);
     }
+    cell.align = "left";
   }
   table.align = "center";
   document.getElementById(tableId).appendChild(table);
