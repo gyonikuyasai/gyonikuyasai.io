@@ -1,61 +1,22 @@
 var roulette;
 var idx;
+var lunchSpotData = [];
 
-// Lunch spot is read from csv
-var lunchSpot = [];
-
-// Make lunch table
+// Make lunch table when this page loaded
 window.onload = function() {
-  this.makeLunchTable();
+  makeLunchSpotTable();
 } 
 
-function makeLunchTable(){
+// Make lunch table from CSV
+function makeLunchSpotTable() {
+  var url = "https://gyonikuyasai.github.io/gyonikuyasai.io/resources/csv/lunchSpot.csv";
   var req = new XMLHttpRequest;
-  req.open("get", "https://gyonikuyasai.github.io/gyonikuyasai.io/resources/csv/lunchSpot.csv");
+  req.open("get", url);
   req.send(null);
   req.onload = function() {
-    lunchSpot = convertCSVtoArray(req.responseText);
-    makeTable(lunchSpot, "lunchTable");
+    lunchSpotData = convertCSVtoArray(req.responseText);
+    makeTable(lunchSpotData, "lunchSpotTable");
   }
-}
-
-function convertCSVtoArray(str){
-  var result = [];
-  var tmp = str.split("\n");
-  for(var i = 0; i < tmp.length; i++) {
-    result[i] = tmp[i].split(',');
-  }
-  return result;
-}
-
-// Make table whose id `tableId` from `data`
-function makeTable(data, tableId) {
-  var table = document.createElement("table");
-  var rows = [];
-
-  for (var i = 0; i < data.length; i++) {
-    rows.push(table.insertRow(-1));
-    cell = rows[i].insertCell(-1);
-    if (i == 0) {
-      cell.style.backgroundColor = "#55acee";
-      cell.style.color = "white";
-      cell.appendChild(document.createTextNode(data[i][0]));
-    } else {
-      var anchor = createLink(data[i]);
-      cell.appendChild(anchor);
-    }
-  }
-
-  table.align = "center";
-  document.getElementById(tableId).appendChild(table);
-}
-
-function createLink(row) {
-  var anchor = document.createElement('a');
-  anchor.textContent = row[0];
-  anchor.innerText = row[0];
-  anchor.href = row[1];
-  return anchor;
 }
 
 // Start roulette
@@ -70,15 +31,14 @@ function stop() {
   if(roulette) {
     clearInterval(roulette);
     // Generate `lunchSpot`
-    document.getElementById("lunchSpot").innerHTML = lunchSpot[idx][0];
+    document.getElementById("lunchSpot").innerHTML = lunchSpotData[idx][0];
   }
 }
 
-// Generate roulette with random value between from 1 to the length of `lunchSpot`
+// Generate roulette with random value between from 1 to the length of `lunchSpotData`
 function generateRoulette() {
-  // Generate random value from 1 to `lunchSpot.length - 2`(exclude top and last blank row)
-  idx = Math.floor( Math.random() * (lunchSpot.length - 2)) + 1;
-  
+  // Generate random value from 1 to (`lunchSpotData`.length - 1) (exclude heading row)
+  idx = Math.floor( Math.random() * (lunchSpotData.length - 1)) + 1;
   // Generate roulette
   document.getElementById("roulette").innerHTML = idx;
 }
