@@ -5,6 +5,8 @@ var COL_TEXT = 1;
 var COL_URL = 2;
 var HEADING_BG_COLOR = "#99CCFF";
 var HEADING_COLOR = "white";
+var TABLE_STYLE_BORDER = "thin groove gray";
+var CELL_STYLE_BORDER = "thin groove gray";
 
 
 // Render HTML table from 2D Array `data` to the element whose ID is `tableId`
@@ -24,7 +26,7 @@ function renderTable(data, tableId) {
     cell = rows[i].insertCell(-1);
     cell.appendChild(document.createTextNode(number));
     cell.style.align = "center"
-    cell.style.border = "thin groove gray";
+    cell.style.border = CELL_STYLE_BORDER;
     if (i == ROW_HEADING) {
       // Change the color of the cell of heading
       cell.style.backgroundColor = HEADING_BG_COLOR;
@@ -33,7 +35,6 @@ function renderTable(data, tableId) {
   
     // Append link or text to the cell
     cell = rows[i].insertCell(-1);
-    // For heading row
     if (i == ROW_HEADING) {
       // Change the color of the cell of heading
       cell.style.backgroundColor = HEADING_BG_COLOR;
@@ -45,11 +46,11 @@ function renderTable(data, tableId) {
       cell.appendChild(createLinkOrTextNode(text,url));
     }
     cell.align = "left";
-    cell.style.border = "thin groove gray";
+    cell.style.border = CELL_STYLE_BORDER;
   }
   table.cellSpacing = "1px";
   table.align = "center";
-  table.style.border = "thin groove gray";
+  table.style.border = TABLE_STYLE_BORDER;
   document.getElementById(tableId).appendChild(table);
 }
 
