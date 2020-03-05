@@ -2,7 +2,12 @@
 var roulette;
 var idx;
 var lunchSpotData = [];
+
 var csvURL = "https://gyonikuyasai.github.io/gyonikuyasai.io/resources/csv/lunchSpot.csv";
+var lunchSpotTableId = "lunchSpotTable";
+var lunchSpotId = "lunchSpot";
+var rouletteId = "roulette";
+var welcomeMessage = "本日の昼食は?";
 
 // Render lunch spot table when this page loaded
 window.onload = function() {
@@ -11,13 +16,12 @@ window.onload = function() {
 
 // Render lunch spot table from CSV
 function renderLunchSpotTable() {
-  var url = csvURL;
   var req = new XMLHttpRequest;
-  req.open("get", url);
+  req.open("get", csvURL);
   req.send(null);
   req.onload = function() {
     lunchSpotData = convertCSVtoArray(req.responseText);
-    renderTable(lunchSpotData, "lunchSpotTable");
+    renderTable(lunchSpotData, lunchSpotTableId);
   }
 }
 
@@ -25,7 +29,7 @@ function renderLunchSpotTable() {
 function start() {
   roulette = setInterval(renderRoulette, 100);
   // Reset `lunchSpot`
-  document.getElementById("lunchSpot").innerHTML = "本日の昼食は?";
+  document.getElementById(lunchSpotId).innerHTML = welcomeMessage;
 }
 
 // Stop roulette
@@ -33,7 +37,7 @@ function stop() {
   if(roulette) {
     clearInterval(roulette);
     // Render `lunchSpot`
-    document.getElementById("lunchSpot").innerHTML = lunchSpotData[idx][0];
+    document.getElementById(lunchSpotId).innerHTML = lunchSpotData[idx][0];
   }
 }
 
@@ -43,5 +47,5 @@ function renderRoulette() {
   //   Exclude the value 0 (row:0 is heading)
   idx = Math.floor( Math.random() * (lunchSpotData.length - 1)) + 1;
   // Render roulette
-  document.getElementById("roulette").innerHTML = idx;
+  document.getElementById(rouletteId).innerHTML = idx;
 }
