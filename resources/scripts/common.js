@@ -45,5 +45,6 @@ function createLink(text, url) {
   anchor.textContent = text;
   anchor.innerText = text;
   anchor.href = url;
+  anchor.target = "_blank";
   return anchor;
 }
