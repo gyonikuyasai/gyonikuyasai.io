@@ -19,7 +19,7 @@ function makeTable(data, tableId) {
       cell.appendChild(document.createTextNode(data[i][0]));
     } else {
       // Append link to the cell
-      var anchor = createLink(data[i]);
+      var anchor = createLink(data[i][0], data[i][1]);
       cell.appendChild(anchor);
     }
     cell.align = "left";
@@ -39,14 +39,11 @@ function convertCSVtoArray(str){
   return result;
 }
 
-// Create `a` tag element
-// `row` assume the following 1D array:
-//  - row 0: label
-//  - row 1: url
-function createLink(row) {
+// Create `a` tag element from `text` and `url`
+function createLink(text, url) {
   var anchor = document.createElement('a');
-  anchor.textContent = row[0];
-  anchor.innerText = row[0];
-  anchor.href = row[1];
+  anchor.textContent = text;
+  anchor.innerText = text;
+  anchor.href = url;
   return anchor;
 }
