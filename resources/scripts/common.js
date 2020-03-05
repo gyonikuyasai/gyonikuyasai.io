@@ -3,7 +3,7 @@
 //  - row    0: heading
 //  - column 0: label
 //  - column 1: url
-function makeTableFrom2DArrayToTableId(data, tableId) {
+function makeTable(data, tableId) {
   var table = document.createElement("table");
   var rows = [];
   // Loop for rows of data
