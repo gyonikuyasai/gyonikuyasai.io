@@ -38,7 +38,8 @@ function stop() {
 
 // Render roulette with random value
 function renderRoulette() {
-  // Generate random value from 1 to (`lunchSpotData`.length - 1). Exclude the value 0 (row:0 is heading)
+  // Generate random value from 1 to (`lunchSpotData`.length - 1)
+  //   Exclude the value 0 (row:0 is heading)
   idx = Math.floor( Math.random() * (lunchSpotData.length - 1)) + 1;
   // Render roulette
   document.getElementById("roulette").innerHTML = idx;
