@@ -9,7 +9,7 @@ var lunchSpotId = "lunchSpot";
 var rouletteId = "roulette";
 var welcomeMessage = "本日の昼食は?";
 
-// Render lunch spot table when this page loaded
+// Render lunch spot table when the page loaded
 window.onload = function() {
   renderLunchSpotTable();
 } 
