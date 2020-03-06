@@ -8,7 +8,7 @@ var csvURL = "https://gyonikuyasai.github.io/gyonikuyasai.io/resources/csv/lunch
 var lunchSpotTableId = "lunchSpotTable";
 var lunchSpotId = "lunchSpot";
 var rouletteId = "roulette";
-var welcomeMessage = "本日の昼食は?";
+var welcomeMessage = "What's for lunch today?";
 
 // Render lunch spot table when the page loaded
 window.onload = function() {
