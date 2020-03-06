@@ -37,6 +37,7 @@ function start() {
 function stop() {
   if(roulette) {
     clearInterval(roulette);
+    document.getElementById(rouletteId).innerHTML = idx;
     // Render `lunchSpot`
     var elm = document.getElementById(lunchSpotId);
     var node = createLinkOrTextNodeFromRow(lunchSpotData[idx]);
