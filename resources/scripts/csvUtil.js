@@ -5,13 +5,14 @@ var COL_TEXT = 1;
 var COL_URL = 2;
 var HEADING_BG_COLOR = "#99CCFF";
 var HEADING_COLOR = "white";
+var LUNCH_SPOT_BG_COLOR = "yellow";
 var TABLE_STYLE_BORDER = "thin groove gray";
 var CELL_STYLE_BORDER = "thin groove gray";
 var TABLE_CELL_SPACING = "2px";
 var TABLE_CELL_PADDING = "2px";
 
 // Render HTML table from 2D Array `data` to the element whose ID is `tableId`
-function renderTable(data, tableId) {
+function renderTable(data, tableId, idx) {
   var table = document.createElement("table");
   var rows = [];
   var text;
@@ -33,6 +34,9 @@ function renderTable(data, tableId) {
       // Change the color of the cell of heading
       cell.style.backgroundColor = HEADING_BG_COLOR;
       cell.style.color = HEADING_COLOR;
+    } else if (i == idx) {
+      // Change the color of the cell of lunch spot
+      cell.style.backgroundColor = LUNCH_SPOT_BG_COLOR;
     }
   
     // Append link or text to the cell

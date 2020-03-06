@@ -22,7 +22,7 @@ function renderLunchSpotTable() {
   req.send(null);
   req.onload = function() {
     lunchSpotData = convertCSVtoArray(req.responseText);
-    renderTable(lunchSpotData, lunchSpotTableId);
+    renderTable(lunchSpotData, lunchSpotTableId, 0);
   }
 }
 
@@ -31,18 +31,25 @@ function start() {
   roulette = setInterval(renderRoulette, 50);
   // Reset `lunchSpot`
   document.getElementById(lunchSpotId).innerHTML = welcomeMessage;
+  // Reset `lunchSpotTable`
+  document.getElementById(lunchSpotTableId).innerHTML = "";
+  renderTable(lunchSpotData, lunchSpotTableId, 0);
 }
 
 // Stop roulette
 function stop() {
   if(roulette) {
     clearInterval(roulette);
+    // Display the number exclude first 0
     document.getElementById(rouletteId).innerHTML = idx;
     // Render `lunchSpot`
     var elm = document.getElementById(lunchSpotId);
     var node = createLinkOrTextNodeFromRow(lunchSpotData[idx]);
     elm.innerHTML = "";
     elm.appendChild(node);
+    // Render `lunchSpotTable`
+    document.getElementById(lunchSpotTableId).innerHTML = "";
+    renderTable(lunchSpotData, lunchSpotTableId, idx);
   }
 }
 
