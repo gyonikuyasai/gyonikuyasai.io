@@ -1,3 +1,11 @@
+.header {
+  color: black;
+  -webkit-text-stroke: 1px #FFF;
+  background-image: url("../images/bg.png");
+  background-repeat: repeat;
+  text-align: center;
+}
+
 .textAlignCenter {
   text-align: center;
 }
