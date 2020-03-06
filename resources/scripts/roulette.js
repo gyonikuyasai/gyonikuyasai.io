@@ -1,6 +1,7 @@
 // Variable definition and initialization
 var roulette;
 var idx;
+var rouletteNum;
 var lunchSpotData = [];
 
 var csvURL = "https://gyonikuyasai.github.io/gyonikuyasai.io/resources/csv/lunchSpot.csv";
@@ -50,5 +51,9 @@ function renderRoulette() {
   //   Exclude the value 0 (row:0 is heading)
   idx = Math.floor( Math.random() * (lunchSpotData.length - 1)) + 1;
   // Render roulette
-  document.getElementById(rouletteId).innerHTML = idx;
+  rouletteNum = idx;
+  if(rouletteNum < 10) {
+    rouletteNum = "0" + rouletteNum;
+  }
+  document.getElementById(rouletteId).innerHTML = rouletteNum;
 }

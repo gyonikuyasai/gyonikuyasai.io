@@ -1,6 +1,6 @@
 // Variable definition and initialization
 var ROW_HEADING = 0;
-var COL_NUMBER = 0;
+var COL_INDEX = 0;
 var COL_TEXT = 1;
 var COL_URL = 2;
 var HEADING_BG_COLOR = "#99CCFF";
@@ -20,13 +20,13 @@ function renderTable(data, tableId) {
   // Loop for row of `data`
   for (var i = 0; i < data.length; i++) {
     rows.push(table.insertRow(-1));
-    number = data[i][COL_NUMBER];
+    index = data[i][COL_INDEX];
     text = data[i][COL_TEXT];
     url = data[i][COL_URL];
     
-    // Append number to the cell
+    // Append index to the cell
     cell = rows[i].insertCell(-1);
-    cell.appendChild(document.createTextNode(number));
+    cell.appendChild(document.createTextNode(index));
     cell.align = "center"
     cell.style.border = CELL_STYLE_BORDER;
     if (i == ROW_HEADING) {
